@@ -1,0 +1,14 @@
+{
+    "angular": {
+        "version": "1.2.21",
+        "js": [
+            "angular.min.js"
+        ]
+    },
+    "bootstrap": {
+        "version": "3.2.0",
+        "js": [
+            "dist/js/boostrap.min.js"
+        ]
+    }
+}
