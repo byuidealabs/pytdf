@@ -1,3 +1,4 @@
+# tests/test_index.py
 from pyramid import testing
 
 
@@ -10,11 +11,11 @@ class TestView(object):
         testing.tearDown()
 
     def test_view(self):
-        from tdf.views import HomeViews
+        from tdf.app.views.index import IndexView
 
         request = testing.DummyRequest()
-        inst = HomeViews(request)
-        response = inst.home()
+        inst = IndexView(request)
+        response = inst.index()
         assert response.status_code == 200
 
 

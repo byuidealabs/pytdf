@@ -62,7 +62,6 @@ setup(name='TDF',
           'develop': Develop,
           'test': PyTest
       },
-      scripts=['bower-install.sh'],
       entry_points="""\
       [paste.app_factory]
       main = tdf:main

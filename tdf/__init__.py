@@ -4,6 +4,6 @@ from pyramid.config import Configurator
 def main(global_config, **settings):
     config = Configurator(settings=settings)
     config.include('pyramid_chameleon')
-    config.add_route('home', '/')
-    config.scan('.views')
+    config.add_route('index', '/')
+    config.scan('.app.views.index')
     return config.make_wsgi_app()
