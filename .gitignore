@@ -1,2 +1,4 @@
 venv
 env34/
+.bower-*
+tdf/public/lib/

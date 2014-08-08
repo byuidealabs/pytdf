@@ -1,7 +1,29 @@
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
+from setuptools.command.install import install as InstallCommand
+from setuptools.command.develop import develop as DevelopCommand
 import sys
 import os
+
+
+def _bower_install():
+    print('\n\n-- Installing Client Dependencies (Bower) --\n\n')
+    os.system('bower install')
+    print('\n\n-- Client Dependencies Installed --\n\n')
+
+
+class Install(InstallCommand):
+
+    def run(self):
+        InstallCommand.run(self)
+        _bower_install()
+
+
+class Develop(DevelopCommand):
+
+    def run(self):
+        DevelopCommand.run(self)
+        _bower_install()
 
 
 class PyTest(TestCommand):
@@ -35,7 +57,12 @@ requires += development_requires
 setup(name='TDF',
       install_requires=requires,
       tests_require=tests_requires,
-      cmdclass={'test': PyTest},
+      cmdclass={
+          'install': Install,
+          'develop': Develop,
+          'test': PyTest
+      },
+      scripts=['bower-install.sh'],
       entry_points="""\
       [paste.app_factory]
       main = tdf:main
