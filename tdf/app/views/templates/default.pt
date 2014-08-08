@@ -3,11 +3,20 @@
 
 <head>
     <title>TDF</title>
+
+    <!--Client Dependency JS Files-->
+    <tal:block tal:repeat="(dependency,details) view.dependencies">
+        <tal:block tal:repeat="js details['js']">
+            <script src="${request.static_url('tdf:public/lib/%s/%s' % (dependency, js))}"
+                    type="text/javascript"></script>
+        </tal:block>
+    </tal:block>
 </head>
 
 <body>
     <h1>${body}</h1>
     <p>The TDF app</p>
+
 </body>
 
 </html>
