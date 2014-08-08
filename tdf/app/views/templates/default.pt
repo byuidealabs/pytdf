@@ -5,17 +5,38 @@
 <head>
     <title>TDF</title>
 
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="Tour de Finance." />
+
     <tal:block tal:repeat="(dependency,details) view.dependencies">
         <tal:block tal:repeat="css details.get('css', [])">
             <link rel="stylesheet" type="text/css"
                   href="${request.static_url('tdf:public/lib/%s/%s' % (dependency, css))}" />
         </tal:block>
     </tal:block>
+
+    <!--if lt IE 9script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')-->
 </head>
 
 <body>
-    <h1>${body}</h1>
-    <p>The TDF app</p>
+    <div class='pagewrapper'>
+        <div class='pagecontainer'>
+            <header class='navbar navbar-fixed-top navbar-inverse'
+                role='navigation'>
+            </header>
+            <section class='content'>
+                <section class='container'>
+                    <h1>${body}</h1>
+                    <p>The TDF app</p>
+                </section>
+            </section>
+        </div>
+        <div class='footer-push'></div>
+    </div>
+    <footer></footer>
 
 
     <tal:block tal:repeat="(dependency,details) view.dependencies">
