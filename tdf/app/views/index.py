@@ -1,7 +1,10 @@
-from pyramid.view import view_config
-from pyramid.response import Response
+from pyramid.view import (
+    view_config,
+    view_defaults
+)
 
 
+@view_defaults(renderer='templates/default.pt')
 class IndexView:
 
     def __init__(self, request):
@@ -9,4 +12,4 @@ class IndexView:
 
     @view_config(route_name='index')
     def index(self):
-        return Response('<body><h1>Hello World</h1></body>')
+        return {'body': 'Hello World'}

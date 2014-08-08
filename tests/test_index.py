@@ -16,7 +16,7 @@ class TestView(object):
         request = testing.DummyRequest()
         inst = IndexView(request)
         response = inst.index()
-        assert response.status_code == 200
+        assert 'Hello World' == response['body']
 
 
 class TestFunctional(object):
