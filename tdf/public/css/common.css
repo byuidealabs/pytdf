@@ -1,0 +1,44 @@
+/* Page Layout */
+
+html, body {
+    height: 100%
+}
+
+.pagewrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -100px;
+}
+
+.footerpush, footer {
+    height: 100px !important;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    background: #eee;
+    -webkit-box-shadow: 0 8px 6px 6px black;
+    -moz-box-shadow: 0 8px 6px 6px black;
+    box-shadow: 0 8px 6px 6px black
+}
+
+footer p {
+    padding:5px 0 12px 10px
+}
+
+footer a {
+    display: block;
+    width: 187px;
+    margin: 5px auto;
+}
+
+footer img {
+    height: 90px;
+}
+
+.content {
+    margin-top: 0 !important;
+    padding-top: 50px;
+}
