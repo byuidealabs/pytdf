@@ -4,7 +4,7 @@ from pyramid.view import (
 from pyramid.response import Response
 
 
-class TutorialViews:
+class HomeViews:
 
     def __init__(self, request):
         self.request = request
