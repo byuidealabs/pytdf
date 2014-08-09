@@ -10,8 +10,17 @@ import glob
 def _walk_paths(static_path, fmt):
     # TODO Make recursive and filter subdirectories
     cwd = os.getcwd()
-    return [path.rpartition('/')[2] for path in
-            glob.glob(fmt % (cwd, static_path))]
+    files = [path.rpartition('/')[2] for path in
+             glob.glob(fmt % (cwd, static_path))
+             if os.path.isfile(path)]
+    subdirs = [path.rpartition('/')[2] for path in
+               glob.glob(fmt % (cwd, static_path))
+               if os.path.isdir(path)]
+    for subdir in subdirs:
+        subfmt = fmt[:-1] + subdir + '/*'
+        morepaths = _walk_paths(static_path, subfmt)
+        files += ['%s/%s' % (subdir, path) for path in morepaths]
+    return files
 
 
 @view_defaults(renderer='templates/default.pt')
