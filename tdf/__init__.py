@@ -4,6 +4,7 @@ from pyramid.authorization import ACLAuthorizationPolicy
 
 
 def main(global_config, **settings):
+    print(settings)
     authn_policy = AuthTktAuthenticationPolicy(
         settings['auth.secret'],
         hashalg='sha512'

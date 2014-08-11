@@ -34,7 +34,10 @@ class TestFunctional(object):
 
     def setup(self):
         from tdf import main
-        app = main({})
+        settings = {
+            'auth.secret': 'secret'
+        }
+        app = main({}, **settings)
         from webtest import TestApp
 
         self.testapp = TestApp(app)
