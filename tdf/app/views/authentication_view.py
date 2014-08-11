@@ -26,14 +26,14 @@ class LoginView(BaseView):
         login = ''
         did_fail = False
 
-        if 'submit' in self.request.POST:
+        if 'login' in self.request.POST:
             login = self.request.POST.get('login', '')
             # psswd = self.request.POST.get('psswd', '')
 
             # TODO authenticate
-            if login != '':
-                headers = remember(self.request, login)
-                return HTTPFound(location=nxt, headers=headers)
+            # if login != '':
+            #    headers = remember(self.request, login)
+            #    return HTTPFound(location=nxt, headers=headers)
             did_fail = True
 
         return {
