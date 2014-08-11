@@ -1,8 +1,15 @@
-# tests/test_index.py
+"""
+Tests the index view, making sure that angular is wired together properly
+and ready run tdf.
+"""
 from pyramid import testing
 
 
 class TestView(object):
+    """
+    Tests the IndexView class to ensure that it is sending the proper data
+    to the view itself.
+    """
 
     def setup(self):
         self.config = testing.setUp()
@@ -20,6 +27,10 @@ class TestView(object):
 
 
 class TestFunctional(object):
+    """
+    Performs a functional test on the index view to ensure that the right
+    content is seen on the page.
+    """
 
     def setup(self):
         from tdf import main
@@ -34,6 +45,9 @@ class TestFunctional(object):
 
 
 class TestDependencyLoading(object):
+    """
+    Ensures that the page can load all of the proper dependencies.
+    """
 
     def setup(self):
         self.config = testing.setUp()
@@ -43,6 +57,10 @@ class TestDependencyLoading(object):
         testing.tearDown()
 
     def test_dependencies(self):
+        """
+        Tests the plugin dependencies (angular.js, jquery, twitter bootstrap,
+        etc)
+        """
         from tdf.app.views.index import IndexView
 
         request = testing.DummyRequest()
@@ -60,6 +78,9 @@ class TestDependencyLoading(object):
         assert 'dist/jquery.min.js' in dependencies['jquery']['js']
 
     def test_stylesheets(self):
+        """
+        Tests the tdf stylesheets in public/css/.
+        """
         from tdf.app.views.index import IndexView
 
         request = testing.DummyRequest()
@@ -69,6 +90,9 @@ class TestDependencyLoading(object):
         assert 'common.css' in stylesheets
 
     def test_js(self):
+        """
+        Tests the tdf javascript in public/js/.
+        """
         from tdf.app.views.index import IndexView
 
         request = testing.DummyRequest()

@@ -1,3 +1,6 @@
+/**
+ * Initializes the angular.js app.
+ */
 window.bootstrap = function() {
     angular.bootstrap(document, ['tdf']);
 };
@@ -7,6 +10,5 @@ window.init = function() {
 };
 
 $(document).ready(function() {
-    //Then init the app
     window.init();
 });
