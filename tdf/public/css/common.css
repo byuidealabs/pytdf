@@ -42,3 +42,29 @@ footer img {
     margin-top: 0 !important;
     padding-top: 50px;
 }
+
+/* Page Elements */
+
+.navbar .nav>li>a.brand {
+    padding-left:20px;
+    margin-left:0
+}
+
+.content {
+    margin-top:50px;
+    width:100%;
+    padding-bottom:100px;
+}
+
+.modal {
+    /*To fix display of modals in bootstrap 3*/
+    display: block;
+    width: 40%;
+    overflow: visible;
+    margin: 0 auto;
+}
+
+.container hr {
+    margin: 4px 0;
+    border-color:#333;
+}

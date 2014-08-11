@@ -30,7 +30,8 @@
     <div class='pagewrapper'>
         <div class='pagecontainer'>
             <header class='navbar navbar-fixed-top navbar-inverse'
-                role='navigation'>
+                role='navigation'
+                ng-include="'public/views/header.html'">
             </header>
             <section class='content'>
                 <section class='container'>
