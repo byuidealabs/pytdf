@@ -34,8 +34,10 @@ class TestFunctional(object):
 
     def setup(self):
         from tdf import main
-        settings = {
-            'auth.secret': 'secret'
+        mysqlurl = 'mysql+pymysql://tdf:markowitz@localhost:3306/test-tdf'
+        settings = {  # TODO have a better way of doing this, don't use mysql
+            'auth.secret': 'secret',
+            'sqlalchemy.url': mysqlurl
         }
         app = main({}, **settings)
         from webtest import TestApp

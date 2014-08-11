@@ -2,9 +2,12 @@ from pyramid.config import Configurator
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 
+from sqlalchemy import engine_from_config
+
 
 def main(global_config, **settings):
-    print(settings)
+    engine = engine_from_config(settings, prefix='sqlalchemy.')
+
     authn_policy = AuthTktAuthenticationPolicy(
         settings['auth.secret'],
         hashalg='sha512'

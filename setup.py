@@ -54,7 +54,9 @@ class PyTest(TestCommand):
 
 requires = [
     'pyramid',
-    'pyramid_chameleon'
+    'pyramid_chameleon',
+    'sqlalchemy',
+    'pymysql',
 ]
 
 tests_requires = [
