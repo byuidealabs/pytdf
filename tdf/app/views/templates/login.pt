@@ -1,0 +1,7 @@
+<html metal:use-macro="load: base.pt">
+
+<section metal:fill-slot="content">
+    <p>Login</p>
+</section>
+
+</html>

@@ -7,7 +7,12 @@ def main(global_config, **settings):
 
     config.add_static_view('public', 'tdf:public')
 
+    # Routes
     config.add_route('index', '/')
-    config.scan('.app.views.index')
+    config.add_route('login', '/login')
+
+    # View Plugin
+    config.scan('.app.views.index_view')
+    config.scan('.app.views.authentication_view')
 
     return config.make_wsgi_app()
