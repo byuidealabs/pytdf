@@ -2,6 +2,7 @@ from pyramid.view import (
     view_config,
     view_defaults
 )
+from pyramid.security import authenticated_userid
 from .base_view import BaseView
 
 
@@ -28,4 +29,9 @@ class IndexView(BaseView):
 
         :return {dict} The data to pass into the index view.
         """
-        return {'body': 'Hello World'}
+        rs = {'body': 'Hello World', 'authenticated': False}
+        user = authenticated_userid(self.request)
+        if user is not None:
+            rs['user'] = user
+            rs['authenticated'] = True
+        return rs

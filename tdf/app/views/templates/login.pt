@@ -5,9 +5,7 @@
 
     <div class='panel panel-danger' tal:condition="failed_attempt">
         <div class='panel-heading'>Login Error</div>
-        <div class='panel-body'>
-            Could not log in user "${login}" with the given password.
-        </div>
+        <div class='panel-body'>${message}</div>
     </div>
 
     <form class='form-horizontal' method='post' action='login'>

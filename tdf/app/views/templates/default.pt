@@ -3,6 +3,7 @@
 <section metal:fill-slot="content">
     <h1>${body}</h1>
     <p>The TDF app</p>
+    <p tal:condition="authenticated">Logged in as ${user}</p>
 </section>
 
 </html>
