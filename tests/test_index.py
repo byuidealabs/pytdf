@@ -18,7 +18,7 @@ class TestView(object):
         testing.tearDown()
 
     def test_view(self):
-        from tdf.app.views.index import IndexView
+        from tdf.app.views.index_view import IndexView
 
         request = testing.DummyRequest()
         inst = IndexView(request)
@@ -61,7 +61,7 @@ class TestDependencyLoading(object):
         Tests the plugin dependencies (angular.js, jquery, twitter bootstrap,
         etc)
         """
-        from tdf.app.views.index import IndexView
+        from tdf.app.views.index_view import IndexView
 
         request = testing.DummyRequest()
         inst = IndexView(request)
@@ -81,7 +81,7 @@ class TestDependencyLoading(object):
         """
         Tests the tdf stylesheets in public/css/.
         """
-        from tdf.app.views.index import IndexView
+        from tdf.app.views.index_view import IndexView
 
         request = testing.DummyRequest()
         inst = IndexView(request)
@@ -93,7 +93,7 @@ class TestDependencyLoading(object):
         """
         Tests the tdf javascript in public/js/.
         """
-        from tdf.app.views.index import IndexView
+        from tdf.app.views.index_view import IndexView
 
         request = testing.DummyRequest()
         inst = IndexView(request)
