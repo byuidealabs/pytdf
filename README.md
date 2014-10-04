@@ -30,6 +30,7 @@ Running `build_environment` and `load_environment` will create the following env
       
 * `$VBIN`: An alias of `$VENV/bin`
 * `$VPYTHON`: An alias of `$VENV/bin/python`
+* `$VPSERVE`: An alias of `$VENV/bin/pserve`
 
 Installing TDF
 --------------
@@ -44,3 +45,12 @@ Running the Test Cases
 To run the test cases:
 
     $VPYTHON setup.py test
+
+Running the TDF Server
+----------------------
+
+Run the server with:  
+        
+    $VPSERVE development.ini --reload
+    
+The TDF app can now be opened at [localhost:6543/](http://localhost:6543/).
