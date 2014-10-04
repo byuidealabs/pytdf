@@ -11,23 +11,25 @@ class IndexView(BaseView):
     """
     Class defining the views on the index, which, through angular, controls
     all of the front end of TDF.
+
+    Parameters
+    ----------
+    request : :class:`pyramid.Request`
+        The request object coming into the view.
     """
 
     def __init__(self, request):
-        """
-        Initializes the IndexView.
-
-        :param request {pyramid.Request} The request object coming into the
-        view.
-        """
         BaseView.__init__(self, request)
 
     @view_config(route_name='index')
     def index(self):
         """
-        Configures and loads the view specified by the route 'index'.
+        Configures and loads the view specified by the route `index`.
 
-        :return {dict} The data to pass into the index view.
+        Returns
+        -------
+        data : dictionary
+            The data to pass into the index view.
         """
         rs = {'body': 'Hello World', 'authenticated': False}
         user = authenticated_userid(self.request)

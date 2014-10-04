@@ -1,10 +1,11 @@
-from setuptools import setup
+from setuptools import setup, Command
 from setuptools.command.test import test as TestCommand
 from setuptools.command.install import install as InstallCommand
 from setuptools.command.develop import develop as DevelopCommand
 import sys
 import os
 import json
+from subprocess import call
 
 
 def _bower_install():
@@ -52,6 +53,23 @@ class PyTest(TestCommand):
         errno = pytest.main(self.test_args)
         sys.exit(errno)
 
+
+class PyDoc(Command):
+    description = 'run documentation'
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        cwd = os.getcwd()
+        os.chdir('tdf/public/docs/')
+        call(['make', 'html'])
+        os.chdir(cwd)
+
 requires = [
     'pyramid',
     'pyramid_chameleon',
@@ -76,7 +94,8 @@ setup(name='TDF',
       cmdclass={
           'install': Install,
           'develop': Develop,
-          'test': PyTest
+          'test': PyTest,
+          'document': PyDoc
       },
       entry_points="""\
       [paste.app_factory]
