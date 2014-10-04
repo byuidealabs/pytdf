@@ -31,8 +31,9 @@ angular.module('tdf.system').controller('HeaderController',
          * consists only of the elements defined by $scope.public_menu.
          *
          * All menu definitions should be arrays of dicts, where each dict
-         * has attributes 'title' (the text of the menu item) and 'link'
-         * (the page, relative to http://<host>/ pointed to by the menu item).
+         * has attributes `title` (the text of the menu item) and `link`
+         * (the page, relative to `http://<host>/` pointed to by the menu
+         * item).
          */
         $scope.set_menu = function() {
             // TODO Other login states.
