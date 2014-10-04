@@ -30,3 +30,17 @@ Running `build_environment` and `load_environment` will create the following env
       
 * `$VBIN`: An alias of `$VENV/bin`
 * `$VPYTHON`: An alias of `$VENV/bin/python`
+
+Installing TDF
+--------------
+
+Once the virtual environment has been loaded, `pydf` can be installed with:
+
+    $VPYTHON setup.py develop
+    
+Running the Test Cases
+----------------------
+
+To run the test cases:
+
+    $VPYTHON setup.py test
