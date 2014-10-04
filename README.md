@@ -1,5 +1,5 @@
-pytdf
-=====
+The Tour de Finance (pytdf)
+===========================
 
 The Tour de Finance (Version 2 with a Python Engine)
 
@@ -66,3 +66,16 @@ Run the server with:
     $VPSERVE development.ini --reload
     
 The TDF app can now be opened at [localhost:6543/](http://localhost:6543/).
+
+Building the Documentation
+--------------------------
+
+Install the documentation dependencies:
+
+    $VBIN/easy_install sphinx numpydoc sphinxcontrib-bibtex
+    
+Generate the documentation with:
+
+    $VPYTHON setup.py document
+    
+The built HTML of the documentation is now available at `public/docs/build/html/`.
