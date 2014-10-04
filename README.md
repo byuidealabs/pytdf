@@ -35,7 +35,19 @@ Running `build_environment` and `load_environment` will create the following env
 Installing TDF
 --------------
 
-Once the virtual environment has been loaded, `pydf` can be installed with:
+First, install `nodejs` using the instructions found [here](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager). In short:
+    
+    sudo apt-get update
+    sudo apt-get install python-software-properties python g++ make
+    sudo add-apt-repository ppa:chris-lea/node.js
+    sudo apt-get update
+    sudo apt-get install nodejs
+    
+Then install `bower`:
+
+    npm install -g bower
+
+Next, load the virtual environment using the instructions above. Once the virtual environment is loaded, `pytdf` can be installed with:
 
     $VPYTHON setup.py develop
     
