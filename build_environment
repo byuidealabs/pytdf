@@ -1,4 +1,5 @@
+mkdir -p $PWD/env34/
 . load_environment
-pyvenv $VENV
+pyvenv-3.4 $VENV
 wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | $VENV/bin/python
 rm setuptools-*.zip
