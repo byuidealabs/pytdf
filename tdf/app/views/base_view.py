@@ -6,15 +6,14 @@ import glob
 class BaseView:
     """
     Class defining details and properties common to all views.
+
+    Parameters
+    ----------
+    request : :class:`pyramid.Request`
+        The request object coming into the view.
     """
 
     def __init__(self, request):
-        """
-        Initializes the View.
-
-        :param request {pyramid.Request} The request object coming into the
-        view.
-        """
         self.request = request
 
     @property
@@ -44,8 +43,11 @@ class BaseView:
         to public/lib/<dependency>/ of the cs and js files to load into the
         index view.
 
-        :return {dict} The json from clientdependencies.json described above
-        parsed into a python dict.
+        Returns
+        -------
+        clientdependencies : dictionary
+            The json from clientdependencies.json described above parsed
+            into a python dictionary.
         """
         with open('clientdependencies.json', 'r') as f:
             return json.load(f).items()
@@ -55,10 +57,13 @@ class BaseView:
         """
         Accessible as a property of an View object.
 
-        The filepaths of all css files in the static_path 'tdf:public/css'
-        (relative to the static_path). See walk_paths().
+        The filepaths of all css files in the static_path `tdf:public/css`
+        (relative to the static_path). See :meth:`walk_paths`.
 
-        :return {array} The relative paths to all css files described above.
+        Returns
+        -------
+        paths : list
+            The relative paths to all css files described above.
         """
         static_path = self.request.static_path('tdf:public/css')
         return BaseView.walk_paths(static_path, '%s/tdf%s/*')
@@ -68,10 +73,13 @@ class BaseView:
         """
         Accessible as a property of an View object.
 
-        The filepaths of all js files in the static_path 'tdf:public/js'
-        (relative to the static_path). See walk_paths().
+        The filepaths of all js files in the static_path `tdf:public/js`
+        (relative to the static_path). See :meth:`walk_paths`.
 
-        :return {array} The relative paths to all js files described above.
+        Returns
+        -------
+        paths : list
+            The relative paths to all js files described above.
         """
         static_path = self.request.static_path('tdf:public/js')
         return BaseView.walk_paths(static_path, '%s/tdf%s/*')
@@ -80,34 +88,44 @@ class BaseView:
     def walk_paths(static_path, fmt):
         """
         Recursively walks and finds all paths relative to the combination of
-        static_path and fmt.
+        `static_path` and `fmt`.
 
-        :param static_path {string, filepath} A static path defined by the tdf
-        system. An example is request.static_path('tdf:public/css').
-        :param fmt {string} A string with two format replacements %s. This is
-        used to create a full path to the system. The first %s is replaced with
-        the current working directory, and teh second is replaced by the static
-        path. For example, if the directory that needs to be walked is
-        /home/user/pytdf/tdf/public/css/, where /home/user/pytdf is the current
-        working directory and /public/css is the static path, then the format
-        code given should be '%s/tdf%s/*' indicating that all files and
-        subdirectories in the desired folder should be walked.
+        Parameters
+        ----------
+        static_path : str (filepath)
+            A static path defined by the TDF system. One example of a static
+            path is: `request.static_path('tdf:public/css')`.
+        fmt : str
+            A string with two format replacements %s. This is used to create a
+            full path to the system. The first %s is replaced with the current
+            working directory, and teh second is replaced by the static path.
+            For example, if the directory that needs to be walked is
+            `/home/user/pytdf/tdf/public/css/`, where `/home/user/pytdf` is the
+            current working directory and `/public/css` is the static path,
+            then the format code given should be `%s/tdf%s/*` indicating that
+            all files and subdirectories in the desired folder should be
+            walked.
 
-        :return files {array of string} An array of filepaths, relative to
-        static_path of all files (including those found in subdirectories)
-        found. For example, if we are walking the css folder organized as
-        follows:
-            css/
-                common.css
-                other.css
-                subdir/
-                    a.css
-                    b.css
-                subdir2/
-                    c.css
-        The returned array would be:
-            ['common.css', 'other.css', 'subdir/a.css', 'subdir/b.css',
-            'subdir2/c.css']
+        Returns
+        -------
+        files : list of str
+            A list of filepaths, relative to static_path of all files
+            (including those found in subdirectories)found. For example, if we
+            are walking the css folder organized as follows:
+
+                css/
+                    common.css
+                    other.css
+                    subdir/
+                        a.css
+                        b.css
+                    subdir2/
+                        c.css
+
+            The returned list would be:
+
+                ['common.css', 'other.css', 'subdir/a.css', 'subdir/b.css',
+                 'subdir2/c.css']
         """
         cwd = os.getcwd()
         files = [path.rpartition('/')[2] for path in
