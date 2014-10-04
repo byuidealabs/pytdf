@@ -24,9 +24,9 @@ The virtual environment only needs to be built once during installation. However
     
 Running `build_environment` and `load_environment` will create the following environment variables which will aid in running TDF under the virtual environment:
 
-    * `$VENV`: Equivalent to `<tdf>/env34/`, where <tdf> is the directory where `pytdf` has been installed. Python scripts which are run under the virtual environment can be run with:
+* `$VENV`: Equivalent to `<tdf>/env34/`, where <tdf> is the directory where `pytdf` has been installed. Python scripts which are run under the virtual environment can be run with:
       
-        $VENV/bin/python <script.py>
+    $VENV/bin/python <script.py>
       
-    * `$VBIN`: An alias of `$VENV/bin`
-    * `$VPYTHON`: An alias of `$VENV/bin/python`
+* `$VBIN`: An alias of `$VENV/bin`
+* `$VPYTHON`: An alias of `$VENV/bin/python`
